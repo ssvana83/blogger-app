@@ -85,3 +85,4 @@ const PostCard = ({post, handleError}) => {
 }
 
 export default PostCard
+

@@ -22,7 +22,7 @@ const CommentsList = ({comments, handleError}) => {
         }
     }, [postId, comments, handleError])
 
-    // if (!comments) return <h2>The data you tried to access does not exist!</h2>
+    if (!comments && !commentsList) return <h2>The data you tried to access does not exist!</h2>
     const finalCommentsList = comments ? comments : commentsList
     const renderComments = finalCommentsList?.map(comment => <CommentCard key={comment.id} comment={comment}/>)
     return (

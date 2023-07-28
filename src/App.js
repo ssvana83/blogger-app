@@ -23,8 +23,8 @@ function App() {
         <Header slogan="Travel Blog" storename="The world's finest blog!"/>
         <Routes>
           <Route path="/posts/new" element={<PostForm handleError={handleError}/>} />
-          <Route path="/posts/:postId/comments" element={<CommentsList />} />
-          <Route path="/posts/:id" element={<PostCard />} />
+          <Route path="/posts/:postId/comments" element={<CommentsList handleError={handleError}/>} />
+          <Route path="/posts/:id" element={<PostCard handleError={handleError}/>} />
           <Route path="/posts" element={<PostsContainer />} />
           <Route path="/" element={<Home />} />
         </Routes>
@@ -34,3 +34,5 @@ function App() {
 }
 
 export default App;
+
+// added handleError to <PostCard /> unsure of this.....
