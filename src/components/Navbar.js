@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const style = {
     width: "60%",
@@ -15,35 +15,35 @@ const Navbar = () => {
     return (
         <div>
             <NavLink
-            activestyle={{
-                fontWeight: "bolder",
-                color: "red"
-            }}
+                activestyle={{
+                    fontWeight: "bolder",
+                    color: "red"
+                }}
                 exact
                 style={style}
                 to="/"
             >Home</NavLink>
 
             <NavLink
-            activestyle={{
-                fontWeight: "bolder",
-                color: "red"
-            }}
+                activestyle={{
+                    fontWeight: "bolder",
+                    color: "red"
+                }}
                 exact
                 style={style}
                 to="/posts"
             >Posts</NavLink>
-            
+
             <NavLink
-                    activestyle={{
-                        fontWeight: "bolder",
-                        color: "red"
-                    }}
-                        exact
-                        style={style}
-                        to="/posts/new"
+                activestyle={{
+                    fontWeight: "bolder",
+                    color: "red"
+                }}
+                exact
+                style={style}
+                to="/posts/new"
             >New Post</NavLink>
-            
+
         </div>
     )
 }

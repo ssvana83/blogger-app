@@ -1,6 +1,6 @@
 const CommentsContainer = () => {
   return (
-    <div>Commetns Container</div>
+    <div>Comments Container</div>
   )
 }
 

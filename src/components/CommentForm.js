@@ -1,7 +1,7 @@
-import {useState} from "react"
-import {useNavigate} from "react-router-dom"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-const CommentForm = ({postId, addNewComment}) => {
+const CommentForm = ({ postId, addNewComment }) => {
     const [comment, setComment] = useState({
         content: "",
         rating: "",
@@ -34,19 +34,19 @@ const CommentForm = ({postId, addNewComment}) => {
             },
             body: JSON.stringify(newComment)
         })
-        .then(resp => {
+            .then(resp => {
                 if (resp.status === 201) {
                     resp.json()
-                    .then(comment => {
-                        addNewComment(comment)
-                        setComment({content: "", rating: ""})
-                    })
+                        .then(comment => {
+                            addNewComment(comment)
+                            setComment({ content: "", rating: "" })
+                        })
                 } else {
                     resp.json()
-                    .then(errorObj => {
-                        alert(errorObj.error)
-                        setComment({content: "", rating: ""})
-                    })
+                        .then(errorObj => {
+                            alert(errorObj.error)
+                            setComment({ content: "", rating: "" })
+                        })
                 }
             })
             .catch(err => alert(err))
@@ -57,9 +57,9 @@ const CommentForm = ({postId, addNewComment}) => {
             <h3>Create a new comment</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="content">Content</label>
-                <input onChange={handleChange} type="text" name="content" value={comment.content} required/><br />
+                <input onChange={handleChange} type="text" name="content" value={comment.content} required /><br />
                 <label htmlFor="rating">Rating</label>
-                <input onChange={handleChange} type="number" name="rating" value={comment.rating} required/><br />
+                <input onChange={handleChange} type="number" name="rating" value={comment.rating} required /><br />
                 <input type="submit" value="Create Comment" />
             </form>
         </>

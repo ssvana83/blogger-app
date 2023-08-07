@@ -1,64 +1,63 @@
-import {useState, useEffect} from "react"
-import {Link, useParams, useLocation, useNavigate} from "react-router-dom"
+import { useState, useEffect } from "react"
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom"
 import CommentForm from './CommentForm'
 import CommentsList from './CommentsList'
 import EditPostForm from "./EditPostForm"
 
-const PostCard = ({post, handleError}) => {
-    const {id} = useParams()
-    const location = useLocation()
-    const [postObj, setPostObj] = useState(null);
-    const [editMode, setEditMode] = useState(false);
-    const [comments, setComments] = useState([]);
-    const navigate = useNavigate();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const PostCard = ({ post, handleError }) => {
+  const { id } = useParams()
+  const location = useLocation()
+  const [postObj, setPostObj] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+  const [comments, setComments] = useState([]);
+  const navigate = useNavigate();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-    useEffect(() => {   
-        if (!post) {
-            fetch(`http://localhost:3001/posts/${id}`)
-            .then(resp => resp.json())
-            .then(post => {
-              setPostObj(post)
-              setComments(post.comments)
-            })
-        }
-    }, [post, id]);
-
-    const addNewComment = (commentObj) => {
-      setComments(currentComments => [commentObj, ...currentComments])
-    }
-
-    const formatDateTime = (datetime) => {
-      const m = new Date(datetime);
-      const dateString =
-          m.getUTCFullYear() + "/" +
-          ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
-          ("0" + m.getUTCDate()).slice(-2) + " " +
-          ("0" + m.getUTCHours()).slice(-2) + ":" +
-          ("0" + m.getUTCMinutes()).slice(-2) + ":" +
-          ("0" + m.getUTCSeconds()).slice(-2);
-      return dateString;
-    }
-
-    const handleUpdate = (updatedPostObj) => {
-      
-      setEditMode(false)
-      setPostObj(updatedPostObj)
-    }
-
-    const handleClick = (e) => { 
-      if (e.target.name === "delete") {
-        fetch(`http://localhost:3001/posts/${postObj.id}`, {    
-          method: "DELETE"
+  useEffect(() => {
+    if (!post) {
+      fetch(`http://localhost:3001/posts/${id}`)
+        .then(resp => resp.json())
+        .then(post => {
+          setPostObj(post)
+          setComments(post.comments)
         })
-        .then(() => navigate("/posts"))
-      } else {
-        setEditMode(true)
-      }
-     }
+    }
+  }, [post, id]);
 
-    const finalPost = post ? post : postObj
-    if (!finalPost) return <h1>Loading...</h1>
+  const addNewComment = (commentObj) => {
+    setComments(currentComments => [commentObj, ...currentComments])
+  }
+
+  const formatDateTime = (datetime) => {
+    const m = new Date(datetime);
+    const dateString =
+      m.getUTCFullYear() + "/" +
+      ("0" + (m.getUTCMonth() + 1)).slice(-2) + "/" +
+      ("0" + m.getUTCDate()).slice(-2) + " " +
+      ("0" + m.getUTCHours()).slice(-2) + ":" +
+      ("0" + m.getUTCMinutes()).slice(-2) + ":" +
+      ("0" + m.getUTCSeconds()).slice(-2);
+    return dateString;
+  }
+
+  const handleUpdate = (updatedPostObj) => {
+    setEditMode(false)
+    setPostObj(updatedPostObj)
+  }
+
+  const handleClick = (e) => {
+    if (e.target.name === "delete") {
+      fetch(`http://localhost:3001/posts/${postObj.id}`, {
+        method: "DELETE"
+      })
+        .then(() => navigate("/posts"))
+    } else {
+      setEditMode(true)
+    }
+  }
+
+  const finalPost = post ? post : postObj
+  if (!finalPost) return <h1>Loading...</h1>
   return (
     <div>
       {!editMode ? <>
@@ -70,16 +69,16 @@ const PostCard = ({post, handleError}) => {
           <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
           <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
         </> : null}
-        </> : <EditPostForm handleError={handleError} postObj={finalPost} handleUpdate={handleUpdate}/>}
+      </> : <EditPostForm handleError={handleError} postObj={finalPost} handleUpdate={handleUpdate} />}
+      <hr />
+      <hr />
+      {location.pathname !== "/posts" ? (<>
+        <CommentForm addNewComment={addNewComment} postId={finalPost.id} />
+        <br />
         <hr />
         <hr />
-        {location.pathname !== "/posts" ? (<>
-          <CommentForm addNewComment={addNewComment} postId={finalPost.id} />
-          <br />
-        <hr />
-        <hr />
-          <CommentsList comments={comments} />
-        </>) : null }
+        <CommentsList comments={comments} />
+      </>) : null}
     </div>
   )
 }

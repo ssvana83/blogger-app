@@ -1,14 +1,14 @@
 import React from 'react';
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 const style = {
     backgroundColor: "red",
     fontSize: "bold"
 }
 
-const Notification = ({error}) => {
+const Notification = ({ error }) => {
     const [disappear, setDisappear] = useState(false);
-    
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setDisappear(true)
