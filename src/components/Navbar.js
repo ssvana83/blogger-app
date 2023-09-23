@@ -14,6 +14,7 @@ const style = {
 const Navbar = () => {
     return (
         <div>
+            <nav class="navbar navbar-expand-lg custom-navbar">
             <NavLink
                 activestyle={{
                     fontWeight: "bolder",
@@ -43,7 +44,7 @@ const Navbar = () => {
                 style={style}
                 to="/posts/new"
             >New Post</NavLink>
-
+            </nav>
         </div>
     )
 }
