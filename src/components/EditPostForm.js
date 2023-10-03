@@ -19,6 +19,7 @@ const EditPostForm = ({ postObj, handleUpdate }) => {
         if ([post.title, post.content, post.deleteTime].some(val => val.trim() === "")) {
             alert("You must fill in all the information please!")
         }
+
         fetch(`http://localhost:3001/posts/${postObj.id}`, {
             method: "PATCH",
             headers: {

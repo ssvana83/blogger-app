@@ -67,7 +67,7 @@ const PostCard = ({ post, handleError }) => {
         {finalPost.mediaUrl ? <img src={finalPost.mediaUrl} alt="Media explanation here" /> : null}
         {location.pathname !== "/posts" ? <>
           <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
-          <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
+          <button name="delete-mode" id="delete-btn" onClick={handleClick}>Delete</button>
         </> : null}
       </> : <EditPostForm handleError={handleError} postObj={finalPost} handleUpdate={handleUpdate} />}
       <hr />
