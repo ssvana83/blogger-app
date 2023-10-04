@@ -1,5 +1,5 @@
 import {useState, useContext} from "react"
-import {useHistory} from "react-router-dom"
+// import {useHistory} from "react-router-dom"
 import {UserContext} from "../context/user"
 import {MessageContext} from "../context/message"
 
@@ -12,7 +12,7 @@ const Signin = () => {
         password: ""
     });
 
-    const history = useHistory()
+    // const history = useHistory()
 
     const handleChange = ({target: {name, value}}) => {
         setUserObj({
@@ -20,6 +20,7 @@ const Signin = () => {
             [name]: value
         })
     }
+    // syntax for target so that you dont need to state e.target.name etc etc
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -28,6 +29,9 @@ const Signin = () => {
         }
         login(userObj)
     }
+// pass into login the userObj since thats our info
+    // dont need fetch call in handlesubmit function since we have a login function via useContext. so just import
+    // login as useContext
     return (
         <>
             <h3>Signin</h3>
