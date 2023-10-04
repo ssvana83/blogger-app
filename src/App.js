@@ -12,6 +12,9 @@ import PostForm from "./components/PostForm";
 import PostsContainer from "./containers/PostsContainer";
 import CommentsList from "./components/CommentsList";
 import Notification from "./components/Notification";
+import Signin2 from './components/Signin2';
+import Signout from './components/Signout';
+import Signup from './components/Signup';
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
@@ -40,6 +43,9 @@ function App() {
           <Route path="/posts/:postId/comments" element={<CommentsList />} />
           <Route path="/posts/:id" element={<PostCard />} />
           <Route path="/posts" element={<PostsContainer />} />
+          <Route path="/signin" element={<Signin2 />} />
+          <Route path="/signout" element={<Signout />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>
