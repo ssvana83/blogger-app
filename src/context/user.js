@@ -40,6 +40,7 @@ function UserProvider({children}) {
     if (resp.status === 202) {
         const data = await resp.json()
         setUser(data)
+        // history.push("/profile")
     } else {
         const errorObj = await resp.json()
         setMessage(errorObj.error)
@@ -47,6 +48,41 @@ function UserProvider({children}) {
   } catch(e) {
     setMessage(e.message)
   }
+  }
+
+  const signup = async (userInfo) => {
+    try {
+      const resp = await fetch("" + baseUrl + "/signup", {
+        method: "POST", 
+        headers: {
+            "Content_Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(userInfo)
+      })
+    if (resp.status === 201) {
+        const data = await resp.json()
+        setUser(data)
+        // history.push("/profile")
+    } else {
+        const errorObj = await resp.json()
+        setMessage(errorObj.error)
+    }
+  } catch(e) {
+    setMessage(e.message)
+  }
+  }
+
+  const signout = async () => {
+    try {
+      const resp = await fetch("" + baseUrl + "/signout", {
+        method: "DELETE"
+      })
+      setUser(null)
+      // history.push("/login")
+    } catch(e) {
+      setMessage(e.message)
+    }
   }
   
   return (
