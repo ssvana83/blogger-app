@@ -15,6 +15,7 @@ import Notification from "./components/Notification";
 import Signin2 from './components/Signin2';
 import Signout from './components/Signout';
 import Signup from './components/Signup';
+import Profile from './components/Profile';
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
@@ -44,6 +45,7 @@ function App() {
           <Route path="/posts/:id" element={<PostCard />} />
           <Route path="/posts" element={<PostsContainer />} />
           <Route path="/signin" element={<Signin2 />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/signout" element={<Signout />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />

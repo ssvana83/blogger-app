@@ -63,6 +63,15 @@ const Navbar = () => {
                 }}
                     exact
                     style={style}
+                    to="/profile"
+                >Profile</NavLink>
+                <NavLink
+                activestyle={{
+                    fontWeight: "bolder",
+                    color: "red"
+                }}
+                    exact
+                    style={style}
                     to="/signout"
                 >Sign Out</NavLink>
                 </>
