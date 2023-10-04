@@ -39,7 +39,7 @@ function UserProvider({children}) {
       })
     if (resp.status === 202) {
         const data = await resp.json()
-        setUser(data)
+        setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
         // history.push("/profile")
     } else {
         const errorObj = await resp.json()
@@ -86,7 +86,7 @@ function UserProvider({children}) {
   }
   
   return (
-      <UserContext.Provider value={{user, setUser, getCurrentUser}}>
+      <UserContext.Provider value={{user, setUser, getCurrentUser, login, signup, signout}}>
             {children}
       </UserContext.Provider>
   )
