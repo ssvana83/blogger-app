@@ -17,6 +17,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {UserContext} from '../context/user'
 import { useContext, useState } from 'react'
+import { useNavigate } from "react-router-dom"
 
 function Copyright(props) {
   return (
@@ -37,6 +38,8 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const {login} = useContext(UserContext)
+  const navigate = useNavigate()
+  
   const [userObj, setUserObj] = useState({
     email: "",
     password: ""
@@ -49,9 +52,12 @@ export default function SignIn() {
     })
 }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    login(userObj)
+    const didItWork = await login(userObj)
+    if (didItWork) {
+     navigate ("./profile")
+    }
   };
 
   return (

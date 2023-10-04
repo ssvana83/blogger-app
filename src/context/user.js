@@ -13,7 +13,7 @@ function UserProvider({children}) {
 
   const getCurrentUser = useCallback(async () => {
     try {
-      const resp = await fetch(baseUrl + "/me")
+      const resp = await fetch("/api/v1/me")
       if (resp.status === 200) {
           const data = await resp.json()
           // setUser(data)
@@ -29,7 +29,7 @@ function UserProvider({children}) {
 
   const login = async (userInfo) => {
     try {
-      const resp = await fetch("" + baseUrl + "/login", {
+      const resp = await fetch("/api/v1/login", {
         method: "POST", 
         headers: {
             "Content_Type": "application/json",
@@ -40,10 +40,11 @@ function UserProvider({children}) {
     if (resp.status === 202) {
         const data = await resp.json()
         setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
-        // history.push("/profile")
+        return true
     } else {
         const errorObj = await resp.json()
         setMessage(errorObj.error)
+        return false
     }
   } catch(e) {
     setMessage(e.message)
@@ -52,7 +53,7 @@ function UserProvider({children}) {
 
   const signup = async (userInfo) => {
     try {
-      const resp = await fetch("" + baseUrl + "/signup", {
+      const resp = await fetch("/api/v1/signup", {
         method: "POST", 
         headers: {
             "Content_Type": "application/json",
@@ -75,7 +76,7 @@ function UserProvider({children}) {
 
   const signout = async () => {
     try {
-      const resp = await fetch("" + baseUrl + "/signout", {
+      const resp = await fetch("/api/v1/signout", {
         method: "DELETE"
       })
       setUser(null)
