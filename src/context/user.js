@@ -11,7 +11,8 @@ function UserProvider({children}) {
   // const history = useHistory();
   
 
-  const getCurrentUser = async () => {
+  const getCurrentUser = useCallback(async () => {
+    try {
       const resp = await fetch(baseUrl + "/me")
       if (resp.status === 200) {
           const data = await resp.json()
@@ -20,6 +21,32 @@ function UserProvider({children}) {
         const errorObj = await resp.json()
         setMessage(errorObj.error)
       }
+    } catch (e) {
+        setMessage(e.message)
+    }
+   }, [setMessage])
+  //  using a try catch
+
+  const login = async (userInfo) => {
+    try {
+      const resp = await fetch("" + baseUrl + "/login", {
+        method: "POST", 
+        headers: {
+            "Content_Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(userInfo)
+      })
+    if (resp.status === 202) {
+        const data = await resp.json()
+        setUser(data)
+    } else {
+        const errorObj = await resp.json()
+        setMessage(errorObj.error)
+    }
+  } catch(e) {
+    setMessage(e.message)
+  }
   }
   
   return (

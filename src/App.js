@@ -1,6 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useEffect, useContext } from "react"
+// useState removed since we arent stroing state locally anymore since context changes
+import {UserContext} from './context/user'
 
 import Home from "./components/Home"
 import Header from "./components/Header";
@@ -12,6 +14,16 @@ import CommentsList from "./components/CommentsList";
 import Notification from "./components/Notification";
 
 function App() {
+  const {getCurrentUser, user} = useContext(UserContext)
+  // now we need to access function of get currentuser
+
+  useEffect(() => {
+    if (!user) {
+      getCurrentUser()
+    }
+    },[user])
+  // dont want dependency array listed so use callback in user.js
+
   // const [error, setError] = useState(null);
   // const handleError = (errorMsg) => setError(errorMsg)
   // can remove these above and take out error calls in return paths below since 
