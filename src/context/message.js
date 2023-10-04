@@ -7,11 +7,11 @@ function MessageProvider({children}) {
   const [message, setMessage] = useState(null);
   
   return (
-      <MessageContect.Provider value={{message, setMessage}}>
+      <MessageContext.Provider value={{message, setMessage}}>
             {children}
-      </MessageContect.Provider>
+      </MessageContext.Provider>
   )
 }
 
 
-export {messageContext, MessageProvider}
+export {MessageContext, MessageProvider}

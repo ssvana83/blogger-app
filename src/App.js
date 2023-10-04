@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import Home from "./components/Home"
 import Header from "./components/Header";
@@ -12,19 +12,21 @@ import CommentsList from "./components/CommentsList";
 import Notification from "./components/Notification";
 
 function App() {
-  const [error, setError] = useState(null);
-  const handleError = (errorMsg) => setError(errorMsg)
+  // const [error, setError] = useState(null);
+  // const handleError = (errorMsg) => setError(errorMsg)
+  // can remove these above and take out error calls in return paths below since 
+  // handling errors and messages with context
 
   return (
     <div className="App">
       <Router>
-        <Notification error={error} />
+        <Notification  />
         <Navbar />
         <Header slogan="Travel Blog" storename="The world's finest blog!"/>
         <Routes>
-          <Route path="/posts/new" element={<PostForm handleError={handleError}/>} />
-          <Route path="/posts/:postId/comments" element={<CommentsList handleError={handleError}/>} />
-          <Route path="/posts/:id" element={<PostCard handleError={handleError}/>} />
+          <Route path="/posts/new" element={<PostForm />} />
+          <Route path="/posts/:postId/comments" element={<CommentsList />} />
+          <Route path="/posts/:id" element={<PostCard />} />
           <Route path="/posts" element={<PostsContainer />} />
           <Route path="/" element={<Home />} />
         </Routes>

@@ -8,7 +8,7 @@ const UserContext = React.createContext()
 function UserProvider({children}) {
   const [user, setUser] = useState(null);
   const {setMessage} = useContext(MessageContext)
-  const history = useHistory();
+  // const history = useHistory();
   
 
   const getCurrentUser = async () => {
@@ -23,14 +23,14 @@ function UserProvider({children}) {
   }
   
   return (
-      <UserContect.Provider value={{user, setUser, getCurrentUser}}>
+      <UserContext.Provider value={{user, setUser, getCurrentUser}}>
             {children}
-      </UserContect.Provider>
+      </UserContext.Provider>
   )
 }
 
 
-export {userContext, UserProvider}
+export {UserContext, UserProvider}
 
 
 
