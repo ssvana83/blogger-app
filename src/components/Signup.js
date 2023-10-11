@@ -38,7 +38,7 @@ const Signup = () => {
 
   const [userObject, setUserObject] = useState({
     email: "",
-    passord: "",
+    password: "",
     username: "",
     passwordConfirmation: ""
   });
@@ -54,10 +54,10 @@ const Signup = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    if ([userObject.email, userObject.password, userObject.passwordConfirmation, userObject.username].some(val => val.trim() ==="")){
-      setMessage({message: "You must complete all fields pleaase", color: "red"})
-    }
-    const doesThisWork = signup({userObject, password_confirmation: userObject.passwordConfirmation})
+    // if ([userObject.email, userObject.password, userObject.passwordConfirmation, userObject.username].some(val => val.trim() ==="")){
+    //   setMessage({message: "You must complete all fields pleaase", color: "red"})
+    // }
+    const doesThisWork = signup({...userObject, password_confirmation: userObject.passwordConfirmation})
     if (doesThisWork) {
       setMessage({message: "You are now signed Up!", color: "green"})
       navigate("/profile")

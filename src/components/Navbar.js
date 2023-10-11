@@ -22,7 +22,6 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                exact
                 style={style}
                 to="/"
             >Home</NavLink>
@@ -32,7 +31,7 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                exact
+                
                 style={style}
                 to="/posts"
             >Posts</NavLink>
@@ -43,7 +42,7 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    exact
+                    
                     style={style}
                     to="/posts/new"
                 >New Post</NavLink>
@@ -52,7 +51,7 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    exact
+                    
                     style={style}
                     to="/profile"
                 >Profile</NavLink>
@@ -61,7 +60,7 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    exact
+                    
                     style={style}
                     to="/profile"
                 >Profile</NavLink>
@@ -70,7 +69,7 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    exact
+                    
                     style={style}
                     to="/signout"
                 >Sign Out</NavLink>
@@ -82,7 +81,7 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    exact
+                   
                     style={style}
                     to="/signin"
                 >Sign In</NavLink>
@@ -91,7 +90,7 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    exact
+                   
                     style={style}
                     to="/signup"
                 >Sign Up</NavLink>
