@@ -4,7 +4,7 @@ const PostsContainer = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/posts")
+        fetch("/api/v1/posts")
         .then(r => r.json())
         .then(data => setPosts(data))
         .catch(err => alert(err))  
@@ -19,3 +19,5 @@ const PostsContainer = () => {
 }
 
 export default PostsContainer
+
+// this was before proxy line added fetch("http://localhost:3001/posts")
