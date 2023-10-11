@@ -81,9 +81,10 @@ function UserProvider({children}) {
         method: "DELETE"
       })
       setUser(null)
-      // history.push("/login")
+      return true
     } catch(e) {
       setMessage(e.message)
+      return false
     }
   }
   
