@@ -6,7 +6,7 @@ const PostsContainer = () => {
     useEffect(() => {
         fetch("/api/v1/posts")
         .then(r => r.json())
-        .then(data => setPosts(data))
+        .then(data => setPosts(data.data.map(p => p.attributes)))
         .catch(err => alert(err))  
     }, []);
 
@@ -21,3 +21,4 @@ const PostsContainer = () => {
 export default PostsContainer
 
 // this was before proxy line added fetch("http://localhost:3001/posts")
+// this used to be on line 9; .then(data => setPosts(data))

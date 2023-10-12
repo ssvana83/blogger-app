@@ -41,12 +41,13 @@ function UserProvider({children}) {
       })
     if (resp.status === 202) {
         const data = await resp.json()
-        setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
-        return true
+        console.log(data)
+        setUser(data)
+        // return true
     } else {
         const errorObj = await resp.json()
         setMessage(errorObj.error)
-        return false
+        // return false
     }
   } catch(e) {
     setMessage(e.message)

@@ -15,6 +15,8 @@ const style = {
 
 const Navbar = () => {
     const {user} = useContext(UserContext)
+
+    
     return (
         <div>
             <NavLink
@@ -31,10 +33,10 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                
                 style={style}
                 to="/posts"
             >Posts</NavLink>
+
             {user ? (
             <>
                 <NavLink
@@ -42,7 +44,6 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    
                     style={style}
                     to="/posts/new"
                 >New Post</NavLink>
@@ -51,25 +52,15 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    
                     style={style}
                     to="/profile"
                 >Profile</NavLink>
+                
                 <NavLink
                 activestyle={{
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                    
-                    style={style}
-                    to="/profile"
-                >Profile</NavLink>
-                <NavLink
-                activestyle={{
-                    fontWeight: "bolder",
-                    color: "red"
-                }}
-                    
                     style={style}
                     to="/signout"
                 >Sign Out</NavLink>
@@ -81,7 +72,6 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                   
                     style={style}
                     to="/signin"
                 >Sign In</NavLink>
@@ -90,7 +80,6 @@ const Navbar = () => {
                     fontWeight: "bolder",
                     color: "red"
                 }}
-                   
                     style={style}
                     to="/signup"
                 >Sign Up</NavLink>

@@ -8,3 +8,6 @@ const PostsList = ({ posts }) => {
 }
 
 export default PostsList
+
+// this was on line 4 instead
+// const renderPosts = posts.map(post => <PostCard key={post.id} post={post} />)
