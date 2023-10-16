@@ -1,26 +1,26 @@
 import React, { useState, useContext, useEffect, useCallback } from "react"
-import { useHistory } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import { MessageContext } from "../context/message"
 
-const baseUrl = "/api/v1"
+
 const UserContext = React.createContext()
 
 function UserProvider({children}) {
   const [user, setUser] = useState(null);
   const {setMessage} = useContext(MessageContext)
-  // const history = useHistory();
+  // const navigate = useNavigate();
   
 
   const getCurrentUser = useCallback(async () => {
     try {
-      const resp = await fetch(baseUrl + "/me")
+      const resp = await fetch("/api/v1/me")
       if (resp.status === 200) {
           const data = await resp.json()
-          setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
-          // setUser(data)
+          // setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
+          setUser(data)
       } else {
         const errorObj = await resp.json()
-        setMessage(errorObj.error)
+        setMessage({message: errorObj.error})
       }
     } catch (e) {
         setMessage(e.message)
@@ -31,7 +31,7 @@ function UserProvider({children}) {
   const login = async (userInfo) => {
     console.log(userInfo)
     try {
-      const resp = await fetch(baseUrl + "/login", {
+      const resp = await fetch("/api/v1/login", {
         method: "POST", 
         headers: {
             "Content-Type": "application/json",

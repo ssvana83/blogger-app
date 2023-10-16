@@ -23,7 +23,7 @@ const PostForm = ({ handleError }) => {
             alert("You must fill in all the information please!")
         }
 
-        fetch("http://localhost:3001/posts", {
+        fetch("/api/v1/posts", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
