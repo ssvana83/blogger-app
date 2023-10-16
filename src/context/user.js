@@ -26,7 +26,7 @@ function UserProvider({children}) {
         setMessage(e.message)
     }
    }, [setMessage])
-  //  using a try catch
+ 
 
   const login = async (userInfo) => {
     console.log(userInfo)
@@ -43,11 +43,9 @@ function UserProvider({children}) {
         const data = await resp.json()
         console.log(data)
         setUser(data)
-        // return true
     } else {
         const errorObj = await resp.json()
         setMessage(errorObj.error)
-        // return false
     }
   } catch(e) {
     setMessage(e.message)

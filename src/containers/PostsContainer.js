@@ -6,7 +6,8 @@ const PostsContainer = () => {
     useEffect(() => {
         fetch("/api/v1/posts")
         .then(r => r.json())
-        .then(data => setPosts(data.data.map(p => p.attributes)))
+        // .then(data => setPosts(data.data.map(p => p.attributes)))
+        .then(data => setPosts(data))
         .catch(err => alert(err))  
     }, []);
 
