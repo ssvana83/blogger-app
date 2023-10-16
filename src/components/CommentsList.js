@@ -20,8 +20,8 @@ const CommentsList = ({ comments }) => {
                 })
                 .catch(error => console.log(error)) //catch/error added in case the user tries to access unknown
         }
-    }, [postId, comments]) //when postId loads, refresh. be sure to list every dependency array here
-
+    }, [postId]) //when postId loads, refresh. be sure to list every dependency array here
+// took ,comments out of dependency array above
     //since we need to specify comments(prop) or commentslist(state variable), we create a variable finalCommentsList
     //now we can create ternary operator that says if you have prop, use prop, otherwise use state variable
     if (!comments && !commentsList) return <h2>The data you tried to access does not exist!</h2>

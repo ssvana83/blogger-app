@@ -2,6 +2,7 @@ import { useState } from "react"
 
 const EditPostForm = ({ postObj, handleUpdate }) => {
     const [post, setPost] = useState({
+        // ********* id: postObj.id,
         title: postObj.title,
         content: postObj.content,
         mediaUrl: postObj.mediaUrl,
@@ -20,7 +21,7 @@ const EditPostForm = ({ postObj, handleUpdate }) => {
             alert("You must fill in all the information please!")
         }
 
-        fetch(`http://localhost:3001/posts/${postObj.id}`, {
+        fetch(`/api/v1/posts/${postObj.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -41,8 +42,6 @@ const EditPostForm = ({ postObj, handleUpdate }) => {
                 <input onChange={handleChange} type="text" name="content" value={post.content} required /><br />
                 <label htmlFor="mediaUrl">Media Url</label>
                 <input onChange={handleChange} type="text" name="mediaUrl" value={post.mediaUrl} /><br />
-                
-                
                 <input type="submit" value="Edit Post" />
             </form>
         </>

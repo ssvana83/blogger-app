@@ -49,8 +49,6 @@ const PostForm = () => {
                 <input onChange={handleChange} type="text" name="content" value={post.content} required /><br />
                 <label htmlFor="mediaUrl">Media Url</label>
                 <input onChange={handleChange} type="text" name="mediaUrl" value={post.mediaUrl} required /><br />
-                
-                
                 <input type="submit" value="Create Post" />
             </form>
         </>

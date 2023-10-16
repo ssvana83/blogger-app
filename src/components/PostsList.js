@@ -2,6 +2,7 @@ import PostCard from "./PostCard"
 
 const PostsList = ({ posts }) => {
     const renderPosts = posts.map(post => <PostCard key={post.id} post={post} />) 
+    
     return (
         <div>{renderPosts}</div>
     )
@@ -9,5 +10,3 @@ const PostsList = ({ posts }) => {
 
 export default PostsList
 
-// this was on line 4 instead
-// const renderPosts = posts.map(post => <PostCard key={post.id} post={post} />)
