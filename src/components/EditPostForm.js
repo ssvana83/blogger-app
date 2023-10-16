@@ -16,7 +16,7 @@ const EditPostForm = ({ postObj, handleUpdate }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if ([post.title, post.content, post.deleteTime].some(val => val.trim() === "")) {
+        if ([post.title, post.content].some(val => val.trim() === "")) {
             alert("You must fill in all the information please!")
         }
 
@@ -41,8 +41,8 @@ const EditPostForm = ({ postObj, handleUpdate }) => {
                 <input onChange={handleChange} type="text" name="content" value={post.content} required /><br />
                 <label htmlFor="mediaUrl">Media Url</label>
                 <input onChange={handleChange} type="text" name="mediaUrl" value={post.mediaUrl} /><br />
-                <label htmlFor="deleteTime">Delete DateTime</label>
-                <input onChange={handleChange} type="datetime-local" name="deleteTime" value={post.deleteTime} required /><br />
+                
+                
                 <input type="submit" value="Edit Post" />
             </form>
         </>

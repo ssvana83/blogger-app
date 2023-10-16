@@ -69,7 +69,7 @@ const PostCard = ({ post, handleError }) => {
           <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
           <button name="delete-mode" id="delete-btn" onClick={handleClick}>Delete</button>
         </> : null}
-      </> : <EditPostForm handleError={handleError} postObj={finalPost} handleUpdate={handleUpdate} />}
+      </> : <EditPostForm postObj={finalPost} handleUpdate={handleUpdate} />}
       <hr />
       <hr />
       {location.pathname !== "/posts" ? (<>

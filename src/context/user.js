@@ -101,11 +101,3 @@ export {UserContext, UserProvider}
 
 
 
-// using context folder with files containing a user and message componant to store seperately.
-// 
-// 
-// 
-// 
-// 
-// 
-// 

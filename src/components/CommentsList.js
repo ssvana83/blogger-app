@@ -2,25 +2,25 @@ import CommentCard from "./CommentCard"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 
-const CommentsList = ({ comments, handleError }) => {
+const CommentsList = ({ comments }) => {
     const { postId } = useParams()
     const [commentsList, setCommentsList] = useState(null)
 
     useEffect(() => {
         if (!comments) {  //if we dont have comments
-            fetch(`http://localhost:3001/posts/${postId}/comments`) //then fetch from post, id, comments
+            fetch(`api/vi/posts/${postId}/comments`) //then fetch from post, id, comments
                 .then(resp => { 
                     if (resp.status === 200) {
                         resp.json()
                             .then(comments => setCommentsList(comments)) //set commentslist to use comments
                     } else { 
                         resp.json()
-                            .then(errorObj => handleError(errorObj.error))
+                            .then((error => console.log(error)))
                     }
                 })
-                .catch(error => handleError(error)) //catch/error added in case the user tries to access unknown
+                .catch(error => console.log(error)) //catch/error added in case the user tries to access unknown
         }
-    }, [postId, comments, handleError]) //when postId loads, refresh. be sure to list every dependency array here
+    }, [postId, comments]) //when postId loads, refresh. be sure to list every dependency array here
 
     //since we need to specify comments(prop) or commentslist(state variable), we create a variable finalCommentsList
     //now we can create ternary operator that says if you have prop, use prop, otherwise use state variable
