@@ -2,10 +2,10 @@ import { useState } from "react"
 
 const EditPostForm = ({ postObj, handleUpdate }) => {
     const [post, setPost] = useState({
-        // ********* id: postObj.id,
+        // id: postObj.id, **Should this be here??
         title: postObj.title,
         content: postObj.content,
-        mediaUrl: postObj.mediaUrl,
+        media_url: postObj.media_url,
     });
 
     const handleChange = (e) => {
@@ -22,6 +22,7 @@ const EditPostForm = ({ postObj, handleUpdate }) => {
         }
 
         fetch(`/api/v1/posts/${postObj.id}`, {
+            // see above has postObj.id.....is this whats needed in others??
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -41,7 +42,7 @@ const EditPostForm = ({ postObj, handleUpdate }) => {
                 <label htmlFor="content">Content</label>
                 <input onChange={handleChange} type="text" name="content" value={post.content} required /><br />
                 <label htmlFor="mediaUrl">Media Url</label>
-                <input onChange={handleChange} type="text" name="mediaUrl" value={post.mediaUrl} /><br />
+                <input onChange={handleChange} type="text" name="mediaUrl" value={post.media_url} /><br />
                 <input type="submit" value="Edit Post" />
             </form>
         </>

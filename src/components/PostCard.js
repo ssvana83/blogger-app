@@ -11,11 +11,11 @@ const PostCard = ({ post }) => {
   const [editMode, setEditMode] = useState(false);
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
   useEffect(() => {
     if (!post) {
-      fetch(`/api/v1/posts/${id}`)
+      fetch(`/api/v1/posts/${id}`) 
         .then(resp => resp.json())
         .then(post => {
           setPostObj(post)
