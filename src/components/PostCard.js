@@ -11,7 +11,7 @@ const PostCard = ({ post }) => {
   const [editMode, setEditMode] = useState(false);
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
-  // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  
 
   useEffect(() => {
     if (!post) {
@@ -33,15 +33,35 @@ const PostCard = ({ post }) => {
     setPostObj(updatedPostObj)
   }
 
+  // http://localhost:3001
   const handleClick = (e) => {
     if (e.target.name === "delete") {
-      fetch(`http://localhost:3001/posts/${postObj.id}`, {
-        method: "DELETE"
+      fetch('/api/v1/posts/#{postObj.id}', {
+        method: "DELETE",
       })
-        .then(() => navigate("/posts"))
+      .then(r => {
+        if (r.ok) {
+          console.log('post successfully deleted');
+          
+          navigate("/posts");
+        } else {
+          console.error('failed to delete post');
+        }
+      })
+      .catch(error => {
+        console.error('network error:', error);
+      });
     } else {
-      setEditMode(true)
+      setEditMode(true);
     }
+  }
+
+  const handleDelete = (post) => {
+    console.log(postObj)
+    fetch('/api/v1/posts/${postObj.id}', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json'}
+    }) 
   }
 
   const finalPost = post ? post : postObj
@@ -53,8 +73,11 @@ const PostCard = ({ post }) => {
         <h4>Content: {location.pathname !== "/posts" ? finalPost.content : `${finalPost.content.slice(0, 20)}...`}</h4>
         {finalPost.mediaUrl ? <img src={finalPost.mediaUrl} alt="Media explanation here" /> : null}
         {location.pathname !== "/posts" ? <>
-          <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
-          <button name="delete-mode" id="delete-btn" onClick={handleClick}>Delete</button>
+          <button name="edit" id="edit-btn" onClick={handleClick}>Edit</button>
+       
+          <br></br>
+          <br></br>
+          <button name="delete" id="delete" onClick={(e) => handleClick(e)} >Delete</button>
         </> : null}
       </> : <EditPostForm postObj={finalPost} handleUpdate={handleUpdate} />}
       <hr />
@@ -71,4 +94,19 @@ const PostCard = ({ post }) => {
 }
 
 export default PostCard
+
+// const handleClick = (e) => {
+//   if (e.target.name === "delete") {
+//     fetch(`http://localhost:3001/posts/${postObj.id}`, {
+//       method: "DELETE"
+//     })
+//       .then(() => navigate("/posts"))
+//   } else {
+//     setEditMode(true)
+//   }
+// }
+
+
+// this was initial fetch at line 39 for handleClick
+// fetch('/api/v1/posts/${postObj.id}'
 

@@ -20,7 +20,6 @@ const EditPostForm = ({ postObj, handleUpdate }) => {
         if ([post.title, post.content].some(val => val.trim() === "")) {
             alert("You must fill in all the information please!")
         }
-
         fetch(`/api/v1/posts/${postObj.id}`, {
             // see above has postObj.id.....is this whats needed in others??
             method: "PATCH",
