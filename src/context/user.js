@@ -20,7 +20,7 @@ function UserProvider({children}) {
           setUser(data)
       } else {
         const errorObj = await resp.json()
-        setMessage({message: errorObj.error})
+        setMessage(errorObj.error)
       }
     } catch (e) {
         setMessage(e.message)
@@ -57,7 +57,7 @@ function UserProvider({children}) {
       const resp = await fetch("/api/v1/signup", {
         method: "POST", 
         headers: {
-            "Content_Type": "application/json",
+            "Content-Type": "application/json",
             "Accept": "application/json"
         },
         body: JSON.stringify(userInfo)

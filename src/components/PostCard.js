@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
   // http://localhost:3001
   const handleClick = (e) => {
     if (e.target.name === "delete") {
-      fetch('/api/v1/posts/#{postObj.id}', {
+      fetch(`/api/v1/posts/${postObj.id}`, {
         method: "DELETE",
       })
       .then(r => {

@@ -40,7 +40,7 @@ const Signup = () => {
     email: "",
     password: "",
     username: "",
-    passwordConfirmation: ""
+    password_confirmation: ""
   });
 
   const navigate = useNavigate();
@@ -52,17 +52,17 @@ const Signup = () => {
     })
   }
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    // if ([userObject.email, userObject.password, userObject.passwordConfirmation, userObject.username].some(val => val.trim() ==="")){
-    //   setMessage({message: "You must complete all fields pleaase", color: "red"})
-    // }
-    const doesThisWork = signup({...userObject, password_confirmation: userObject.passwordConfirmation})
-    if (doesThisWork) {
-      setMessage({message: "You are now signed Up!", color: "green"})
-      navigate("/profile")
-    }
-}
+const handleSubmit = e => {
+  e.preventDefault();
+  signup(userObject)
+  .then(response => {
+    setMessage({ message: "You are now signed up!" });
+    // navigate("/profile");
+  })
+  .catch(error => {
+    setMessage({ message: "Error during signup"});
+  });
+};
 
 return (
   <ThemeProvider theme={theme}>
@@ -125,13 +125,13 @@ return (
                     <TextField
                       required
                       fullWidth
-                      name="passwordConfirmation"
+                      name="password_confirmation"
                       label="Password Confirmation"
                       type="password"
                       id="password-confirmation"
                       autoComplete="new-password"
                       onChange={handleChange}
-                      value={userObject.passwordConfirmation}
+                      value={userObject.password_confirmation}
                     />
                   </Grid>
                   <Grid item xs={12}>
