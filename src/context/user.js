@@ -4,6 +4,7 @@ import { MessageContext } from "../context/message"
 
 
 const UserContext = React.createContext()
+// const navigate = useNavigate()
 
 function UserProvider({children}) {
   const [user, setUser] = useState(null);
@@ -66,6 +67,7 @@ function UserProvider({children}) {
         const data = await resp.json()
         setUser(data)
         // history.push("/profile")
+        // navigate("/profile")
     } else {
         const errorObj = await resp.json()
         setMessage(errorObj.error)

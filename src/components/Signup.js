@@ -55,13 +55,14 @@ const Signup = () => {
 const handleSubmit = e => {
   e.preventDefault();
   signup(userObject)
-  .then(response => {
-    setMessage({ message: "You are now signed up!" });
-    // navigate("/profile");
-  })
-  .catch(error => {
-    setMessage({ message: "Error during signup"});
-  });
+  // .then(response => {
+  //   setMessage(signup);
+  //   // { message: "You are now signed up!" }
+  //   // navigate("/profile");
+  // })
+  // .catch(error => {
+  //   setMessage({ message: "Error during signup"});
+  // });
 };
 
 return (
