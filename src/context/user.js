@@ -17,7 +17,6 @@ function UserProvider({children}) {
       const resp = await fetch("/api/v1/me")
       if (resp.status === 200) {
           const data = await resp.json()
-          // setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
           setUser(data)
       } else {
         const errorObj = await resp.json()

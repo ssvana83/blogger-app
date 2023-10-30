@@ -33,7 +33,6 @@ const PostCard = ({ post }) => {
     setPostObj(updatedPostObj)
   }
 
-  // http://localhost:3001
   const handleClick = (e) => {
     if (e.target.name === "delete") {
       fetch(`/api/v1/posts/${postObj.id}`, {
@@ -71,6 +70,7 @@ const PostCard = ({ post }) => {
       {!editMode ? <>
         <h3>Title: <Link to={`/posts/${finalPost.id}`}>{finalPost.title}</Link></h3>
         <h4>Content: {location.pathname !== "/posts" ? finalPost.content : `${finalPost.content.slice(0, 20)}...`}</h4>
+        <h4>Post written by: {finalPost.user.username}</h4>
         {finalPost.mediaUrl ? <img src={finalPost.mediaUrl} alt="Media explanation here" /> : null}
         {location.pathname !== "/posts" ? <>
           <button name="edit" id="edit-btn" onClick={handleClick}>Edit</button>

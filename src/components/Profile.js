@@ -13,6 +13,7 @@ const Profile = () => {
     <div>
       <h2>{user.username} Profile</h2> 
       <h4>{user.email} </h4>
+      
     </div>
   )
 }

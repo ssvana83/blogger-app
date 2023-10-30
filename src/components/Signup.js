@@ -1,5 +1,5 @@
 import { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
+
 import {UserContext} from "../context/user"
 import {MessageContext} from "../context/message"
 import * as React from 'react';
@@ -43,7 +43,7 @@ const Signup = () => {
     password_confirmation: ""
   });
 
-  const navigate = useNavigate();
+  
 
   const handleChange = ({target: {name, value}}) => {
     setUserObject({

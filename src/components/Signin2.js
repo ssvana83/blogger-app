@@ -1,6 +1,3 @@
-// this componant uses MaterialUI
-// edited to make it a controlled form by using a value and an onChange
-
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -57,7 +54,7 @@ export default function SignIn() {
     event.preventDefault();
     const didItWork = await login(userObj)
     if (didItWork) {
-     navigate ("./profile")
+     navigate ("./posts")
     }
   };
 

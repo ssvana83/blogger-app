@@ -1,12 +1,13 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import {UserContext} from "../context/user"
 
 const CommentForm = ({ postId, addNewComment }) => {
     const [comment, setComment] = useState({
         content: "",
         rating: "",
     });
-
+    const {user} = useContext(UserContext);
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -25,9 +26,10 @@ const CommentForm = ({ postId, addNewComment }) => {
         const newComment = {
             rating: comment.rating,
             content: comment.content,
+            user_id: user.id
         }
 
-        fetch(`http://localhost:3001/posts/${postId}/comments`, {
+        fetch(`/api/v1/posts/${postId}/comments`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
