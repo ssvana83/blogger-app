@@ -21,5 +21,3 @@ const PostsContainer = () => {
 
 export default PostsContainer
 
-// this was before proxy line added fetch("http://localhost:3001/posts")
-// this used to be on line 9; .then(data => setPosts(data))

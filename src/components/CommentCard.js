@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
 
+
 const CommentCard = ({ comment }) => {
   const { id } = useParams()
   const [commentObj, setCommentObj] = useState(null);
@@ -17,7 +18,8 @@ const CommentCard = ({ comment }) => {
   return (
     <div>
       <h4>Content: {finalComment.content}</h4>
-      <h4>Rating: {finalComment.rating}</h4>
+      <p>Rating: {finalComment.rating}</p>
+      <p>Comment created by: {finalComment.user_id}</p>
     </div>
   )
 }
